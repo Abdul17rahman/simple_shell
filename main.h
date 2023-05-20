@@ -21,4 +21,8 @@ char *_strdup(char *str);
 
 char **_split(char *str, char *del);
 
+void _free_words(char **);
+
+char *_read_line(void);
+
 #endif

@@ -12,8 +12,10 @@ void _free_words(char **arry)
 {
 	size_t i;
 
-	for (i = 0; arry[i] != NULL; i++)
+	if (arry != NULL)
 	{
-		free(arry[i]);
+		for (i = 0; arry[i] != NULL; i++)
+			free(arry[i]);
+		free(arry);
 	}
 }
