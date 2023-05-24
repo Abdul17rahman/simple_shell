@@ -32,6 +32,5 @@ int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c);
 void execmd(char **argv);
 char *_strcat(char *dest, char *src);
 void execute_cmd(char **args);
-void *do_mem(size_t size, void *ptr);
-static void do_exit(const char *msg, int code);
+
 #endif
