@@ -16,7 +16,7 @@ char **_split(char *str, char *del)
 	if (str == NULL || *str == '\0')
 		return (NULL);
 	copy = _strdup(str);
-	nwords = word_count(str, " ");
+	nwords = word_count(str, del);
 	words = malloc((nwords + 1) * sizeof(char *));
 	word = strtok(copy, del);
 

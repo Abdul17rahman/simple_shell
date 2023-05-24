@@ -11,22 +11,32 @@
 
 int main(int argc, char *argv[])
 {
-	char *lineptr, **words;
-	size_t i;
-	(void)argc;
-	(void)argv;
+	char *line = NULL, *del = " \n";
+	size_t i = 0;
 
-	while (1)
+	if (isatty(STDIN_FILENO))
 	{
-		_puts("($) ");
-		lineptr = _read_line();
-		words = _split(lineptr, " ");
-		for (i = 0; words[i] != NULL; i++)
+		(void)argc;
+		while (1)
 		{
-			_puts(words[i]);
+			_puts("($) ");
+			if (getline(&line, &i, stdin) == -1)
+			{
+				free(line);
+				return (-1);
+			}
+			argv = _split(line, del);
+			if (argv == NULL)
+				return (-1);
+			execute_cmd(argv);
+			_free_words(argv);
 		}
-		free(lineptr);
-		_free_words(words);
 	}
+	else
+	{
+		if (argc != 2)
+			return (-1);
+	}
+	free(line);
 	return (0);
 }

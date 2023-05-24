@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <string.h>
+#include <sys/wait.h>
 
 int _strlen(char *s);
 
@@ -24,5 +25,9 @@ char **_split(char *str, char *del);
 void _free_words(char **);
 
 char *_read_line(void);
+
+char *_strcat(char *dest, char *src);
+
+void execute_cmd(char **args);
 
 #endif

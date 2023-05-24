@@ -9,6 +9,7 @@ char *_get_path(char **env)
 {
 	size_t index = 0, var = 0, counter = 0;
 	char *path = NULL;
+
 	while (env[index] != NULL)
 	{
 		if (strncmp(env[index], "PATH=", 5) == 0)
