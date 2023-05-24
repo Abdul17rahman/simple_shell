@@ -11,8 +11,9 @@
 
 int main(int argc, char *argv[])
 {
-	char *line = NULL, *del = " \n";
+	char *line = NULL, *del = " \n", **args;
 	size_t i = 0;
+	ssize_t bytes;
 
 	if (isatty(STDIN_FILENO))
 	{
@@ -31,11 +32,6 @@ int main(int argc, char *argv[])
 			execute_cmd(argv);
 			_free_words(argv);
 		}
-	}
-	else
-	{
-		if (argc != 2)
-			return (-1);
 	}
 	free(line);
 	return (0);
