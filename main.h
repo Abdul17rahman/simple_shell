@@ -24,5 +24,10 @@ char **_split(char *str, char *del);
 void _free_words(char **);
 
 char *_read_line(void);
+char *_get_path(char **env);
 
+void _exit_command(char **arg, char *lineptr, int _exit);
+void _getenv(char **env);
+int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c);
+void execmd(char **argv);
 #endif
