@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <string.h>
+#include <sys/wait.h>
 
 int _strlen(char *s);
 
@@ -26,8 +27,15 @@ void _free_words(char **);
 char *_read_line(void);
 char *_get_path(char **env);
 
+<<<<<<< HEAD
 void _exit_command(char **arg, char *lineptr, int _exit);
 void _getenv(char **env);
 int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c);
 void execmd(char **argv);
+=======
+char *_strcat(char *dest, char *src);
+
+void execute_cmd(char **args);
+
+>>>>>>> 671bdf8c91cc44943396c53e1d188a791653c134
 #endif

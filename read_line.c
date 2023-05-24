@@ -13,7 +13,7 @@ char *_read_line(void)
 
 	if (getline(&line, &buffer_size, stdin) < 0)
 	{
-		return (NULL);
+		exit(EXIT_FAILURE);
 	}
 	return (line);
 }
