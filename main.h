@@ -26,16 +26,12 @@ void _free_words(char **);
 
 char *_read_line(void);
 char *_get_path(char **env);
-
-<<<<<<< HEAD
 void _exit_command(char **arg, char *lineptr, int _exit);
 void _getenv(char **env);
 int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c);
 void execmd(char **argv);
-=======
 char *_strcat(char *dest, char *src);
-
 void execute_cmd(char **args);
-
->>>>>>> 671bdf8c91cc44943396c53e1d188a791653c134
+void *do_mem(size_t size, void *ptr);
+static void do_exit(const char *msg, int code);
 #endif
