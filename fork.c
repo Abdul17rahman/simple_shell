@@ -10,7 +10,7 @@
 void execute_cmd(char **args)
 {
 	pid_t child;
-	char *cmd;
+	char *cmd = NULL;
 
 	if (args == NULL)
 	{
