@@ -39,6 +39,8 @@ int main(int argc, char *argv[])
 		if (bytes == -1)
 			return (-1);
 		argv = _split(line, del);
+		if (argv == NULL)
+			return (-1);
 		execute_cmd(argv);
 		_free_words(argv);
 	}

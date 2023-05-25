@@ -11,18 +11,16 @@ void execute_cmd(char **args)
 {
 	pid_t child;
 	char *cmd = NULL;
+	int status;
 
 	if (args == NULL)
-	{
-		_puts("No commands\n");
-		exit(EXIT_FAILURE);
-	}
+		return;
 	child = fork();
 
 	if (child == -1)
 	{
-		_puts("Error forking");
-		exit(EXIT_FAILURE);
+		perror("Error forking");
+		return;
 	}
 	if (child == 0)
 	{
@@ -30,12 +28,21 @@ void execute_cmd(char **args)
 		if (execve(cmd, args, NULL) == -1)
 		{
 			perror("Error:");
-			exit(EXIT_FAILURE);
+			return;
 		}
 	}
 	else
 	{
-		wait(NULL);
+		if (wait(&status) == -1)
+		{
+			perror("Failure wait");
+			return;
+		}
+		if (!WIFEXITED(status))
+		{
+			write(STDOUT_FILENO, args[0], 1);
+			return;
+		}
 	}
 }
 
