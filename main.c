@@ -11,7 +11,7 @@
 
 int main(int argc, char *argv[])
 {
-	char *line = NULL, *del = " \n", **args;
+	char *line = NULL, *del = " \n";
 	size_t i = 0;
 	ssize_t bytes;
 
@@ -32,6 +32,15 @@ int main(int argc, char *argv[])
 			execute_cmd(argv);
 			_free_words(argv);
 		}
+	}
+	else
+	{
+		bytes = getline(&line, &i, stdin);
+		if (bytes == -1)
+			return (-1);
+		argv = _split(line, del);
+		execute_cmd(argv);
+		_free_words(argv);
 	}
 	free(line);
 	return (0);
