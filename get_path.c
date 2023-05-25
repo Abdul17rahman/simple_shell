@@ -1,32 +1,35 @@
 #include "main.h"
-/**
- * _get_path - This function gets the value of the  PATH variable
- * @env: The environment variable
- * Return: The value of the PATH Variable
- */
 
+/**
+ * _get_path - Get the value of the PATH environment variable
+ * @env: The local environment variables
+ *
+ * Return: The value of the PATH variable or NULL if it doesn't exist
+ */
 char *_get_path(char **env)
 {
-	size_t index = 0, var = 0, counter = 0;
+	size_t index, var, count;
 	char *path = NULL;
 
-	while (env[index] != NULL)
+	for (index = 0; strncmp(env[index], "PATH=", 5); index++)
 	{
-		if (strncmp(env[index], "PATH=", 5) == 0)
-			break;
-		index++;
+		if (env[index] == NULL)
+			return (NULL);
 	}
-	if (env[index] == NULL)
-		return (NULL);
-	counter = _strlen(env[index]) - 5;
-	path = malloc(sizeof(char) * (counter + 1));
 
+	for (count = 5; env[index][count]; count++)
+		;
+
+	path = malloc(sizeof(char) * (count + 1));
 	if (path == NULL)
 		return (NULL);
 
-	for (var = 5; env[index][var] != '\0'; var++, counter++)
-		path[counter] = env[index][var];
+	for (var = 5, count = 0; env[index][var]; var++, count++)
+	{
+		path[count] = env[index][var];
+	}
+	path[count] = '\0';
 
-	path[counter] = '\0';
 	return (path);
 }
+
