@@ -32,6 +32,6 @@ void execute_cmd(char **args);
 
 char *_get_path_loc(char *);
 
-void _exit_command(char **arg, char *lineptr, int _exit);
+void _exit_command(char **arg, char *lineptr);
 
 #endif

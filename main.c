@@ -15,6 +15,8 @@ int main(int argc, char *argv[])
 	size_t i = 0;
 	ssize_t bytes;
 
+	(void)argc;
+
 	if (isatty(STDIN_FILENO))
 	{
 		while (1)
@@ -25,9 +27,8 @@ int main(int argc, char *argv[])
 				free(line);
 				return (-1);
 			}
-			argc = word_count(line, del);
 			argv = _split(line, del);
-			_exit_command(argv, line, argc);
+			_exit_command(argv, line);
 			execute_cmd(argv);
 			_free_words(argv);
 		}
