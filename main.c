@@ -17,7 +17,6 @@ int main(int argc, char *argv[])
 
 	if (isatty(STDIN_FILENO))
 	{
-		(void)argc;
 		while (1)
 		{
 			_puts("($) ");
@@ -26,9 +25,9 @@ int main(int argc, char *argv[])
 				free(line);
 				return (-1);
 			}
+			argc = word_count(line, del);
 			argv = _split(line, del);
-			if (argv == NULL)
-				return (-1);
+			_exit_command(argv, line, argc);
 			execute_cmd(argv);
 			_free_words(argv);
 		}
