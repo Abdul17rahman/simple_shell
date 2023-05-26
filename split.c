@@ -13,7 +13,7 @@ char **_split(char *str, char *del)
 	size_t nwords, j = 0;
 	char *copy, *word, **words;
 
-	if (str == NULL || *str == '\0')
+	if (!str || !del)
 		return (NULL);
 	copy = _strdup(str);
 	nwords = word_count(str, del);

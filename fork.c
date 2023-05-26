@@ -24,7 +24,7 @@ void execute_cmd(char **args)
 	}
 	if (child == 0)
 	{
-		cmd = args[0];
+		cmd = _get_path_loc(args[0]);
 		if (execve(cmd, args, NULL) == -1)
 		{
 			perror("Error:");

@@ -30,4 +30,6 @@ char *_strcat(char *dest, char *src);
 
 void execute_cmd(char **args);
 
+char *_get_path_loc(char *);
+
 #endif
