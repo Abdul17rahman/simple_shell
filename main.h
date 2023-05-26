@@ -12,6 +12,8 @@
 #include <string.h>
 #include <sys/wait.h>
 
+extern char **environ;
+
 int _strlen(char *s);
 
 void _puts(char *str);
@@ -33,5 +35,7 @@ void execute_cmd(char **args);
 char *_get_path_loc(char *);
 
 void _exit_command(char **arg, char *lineptr);
+
+int _getenv(char **arg);
 
 #endif

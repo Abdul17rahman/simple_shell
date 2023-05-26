@@ -3,14 +3,13 @@
  * _exit_command - this function closes the simple_shell when
  * @arg: pointer with the direction argument.
  * @lineptr: standar input string
- * @_exit: value of exit
  * Return: None
  */
 void _exit_command(char **arg, char *lineptr)
 {
 	int exit_status;
 
-	if(strcmp(arg[0], "exit") == 0)
+	if (strcmp(arg[0], "exit") == 0)
 	{
 		if (arg[1] != NULL)
 			exit_status = atoi(arg[1]);
@@ -24,18 +23,21 @@ void _exit_command(char **arg, char *lineptr)
 
 /**
  *_getenv - function to get all env
- *@env: enviroment
+ *@arg: enviroment
  *Return: 0
  */
 
-void _getenv(char **env)
+int _getenv(char **arg)
 {
 	size_t run = 0;
 
-	while (env[run])
+	if (strcmp(arg[0], "env") == 0)
 	{
-		write(STDOUT_FILENO, env[run], _strlen(env[run]));
-		write(STDOUT_FILENO, "\n", 1);
-		run++;
+		for (run = 0; environ[run] != NULL; run++)
+		{
+			_puts(environ[run]);
+			_puts("\n");
+		}
 	}
+	return (run);
 }

@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
 			}
 			argv = _split(line, del);
 			_exit_command(argv, line);
+			_getenv(argv);
 			execute_cmd(argv);
 			_free_words(argv);
 		}
