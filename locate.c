@@ -1,7 +1,7 @@
 #include "main.h"
 /**
- * _get_path - This function gets the value of the  PATH variable
- * @env: The environment variable
+ * _get_path_loc - This function gets the value of the  PATH variable
+ * @com: command passed in
  * Return: The value of the PATH Variable
  */
 
@@ -10,7 +10,7 @@ char *_get_path_loc(char *com)
 	size_t cmd_len, path_len;
 	char *path, *absol_path, *cpy, *path_dir;
 	struct stat buf_stat;
-	
+
 	cmd_len = _strlen(com);
 	path = getenv("PATH");
 
